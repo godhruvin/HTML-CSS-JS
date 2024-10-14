@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <style>
+        body {
+            background-color: lightskyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        button {
+            border: 1px solid gray;
+            border-radius: 6px;
+            width: 8rem;
+            height: 2rem;
+            color: white;
+            background-color: indianred;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: white;
+            opacity: 0.8;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <button>Show Cookie</button>
+        <button>Create Cookie</button>
+    </div>
+
+</body>
+<script>
+    let cookie = document.cookie;
+    console.log(cookie);
+    const buttonEl = document.getElementsByTagName('button')[0];
+    buttonEl.addEventListener('click', () => {
+        if (cookie = " ") alert("no cookie is there")
+        else {
+            const node = document.createElement('p');
+            const nodeEl = document.createTextNode(`Your Cookie is : ${cookie}`);
+            node.appendChild(nodeEl);
+            document.getElementById('main').appendChild(node);
+        }
+
+    })
+    const buttonCreateCookie = document.getElementsByTagName('button')[1];
+    buttonCreateCookie.addEventListener('click', () => {
+        if (cookie == "") {
+            cookie = "Username = Dhruvin";
+            let cookieArr = cookie.split('=');
+            const node = document.createElement('p');
+            const nodeEl = document.createTextNode(`Your Cookie is : Name = ${cookieArr[0]} and Value = ${cookieArr[1]}`);
+            node.appendChild(nodeEl);
+            document.getElementById('main').appendChild(node);
+            documen
+        }
+
+    })
+</script>
+
+</html>

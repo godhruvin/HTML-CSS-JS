@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>browser object model</title>
+  </head>
+  <body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <button onclick="updateText()">Click the button</button>
+    <p id="para"></p>
+  </body>
+  <script>
+    const  updateText = () => {
+      setInterval(() => {
+        document.getElementById("para").textContent = "hello world";
+      }, 3000);
+    }
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frames And Windows</title>
+</head>
+
+<body style="display: flex;justify-content: center;align-items: center; 
+height: 100vh;background-color: purple;">
+    <div style="background-color: #f0f0f0;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.4);width: 400px;height: 150px;display:grid; place-items: center;">
+        <button style="background-color: indianred;color: white;
+        border-radius: 9px; box-shadow: 0px 0px 1px rgba(2,2,2,2);
+        cursor: pointer;width: 120px;height: 40px;" id="btn">
+            Open Window
+        </button>
+    </div>
+</body>
+<script>
+    let btnel = document.getElementById('btn');
+    btnel.onclick = () => {
+        let newWin = window.open("about:blank", "hello", "width=200,height=200");
+        newWin.document.write("Hello, world!");
+    }
+</script>
+
+</html>
