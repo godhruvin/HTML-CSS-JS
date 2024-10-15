@@ -67,11 +67,27 @@ function deleteTask(index) {
 }
 
     // Edit task functionality
-    // logic : when user click on the edit button of a task , that task title , due date and all should be fetched and added into the create Task form  and u can update the data there.
+    // logic : when user click on the edit button of a task , that task title , due date and all should be fetched and added into the create Task form  and u can update the data there. 
 
     function editTask(index) {
-       // fetch the tasks from the local storage
+       // fetch the tasks from the storage
        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-       
+ 
+       // get that task to edit from the tasks;
+       const task = tasks[index];
+        
+       // set the values of the task to the fields in the form
+       document.getElementById('title').value = tasks.title;
+       document.getElementById('Description').value = tasks.description
+       document.getElementById('Due Date').value = tasks.dueDate;
+
+       document.querySelector(`input[name="priority"] value=${tasks.priority}`).checked = true;
+       document.querySelector(`input[name="status"] value=${tasks.status}`).checked = true;
+
+       document.getElementById('task-form').onsubmit(function(event){
+            event.preventDefault();
+            editTask(index);
+       })
+
     }
 document.addEventListener('DOMContentLoaded', displayTasks);
