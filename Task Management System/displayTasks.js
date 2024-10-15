@@ -1,9 +1,6 @@
-// when the user click on the show Tasks it should show the tasks html .
-
 // Function to display tasks
 function displayTasks() {
     const taskListElement = document.getElementById('task-list');
-    debugger;
     const noTasksMessage = document.getElementById('no-tasks-message');
 
     // Clear the current task list
@@ -24,70 +21,131 @@ function displayTasks() {
             const taskItem = document.createElement('div');
             taskItem.className = 'task-item';
             taskItem.innerHTML = `
-        <div class="task-details">
-            <h3 class="task-title">${task.title}</h3>
-            <p class="task-description">${task.description}</p>
-            <p class="task-due-date">Due Date: <strong>${task.dueDate}</strong></p>
-            <p class="task-priority">Priority: <strong>${task.priority}</strong></p>
-            <p class="task-status">Status: <strong>${task.status}</strong></p>
-        </div>
-        <div class="task-actions">
-            <button class="edit-button" onclick="editTask(${index})">Edit</button>
-            <button class="delete-button" onclick="deleteTask(${index})">Delete</button>
-        </div>
+                <div class="task-details">
+                    <h3 class="task-title">${task.title}</h3>
+                    <p class="task-description">${task.description}</p>
+                    <p class="task-due-date">Due Date: <strong>${task.dueDate}</strong></p>
+                    <p class="task-priority">Priority: <strong>${task.priority}</strong></p>
+                    <p class="task-status">Status: <strong>${task.status}</strong></p>
+                </div>
+                <div class="task-actions">
+                    <button class="edit-button" onclick="editTask(${index})">Edit</button>
+                    <button class="delete-button" onclick="deleteTask(${index})">Delete</button>
+                </div>
             `;
             taskListElement.appendChild(taskItem);
         });
     }
 }
 
-
-
-// function to delete the task.
-// logic : Adding event on click of delete button that will fetch the task from local storage and  removing it from the local storage.
-
+// Function to delete the task
 function deleteTask(index) {
-    const confirmDelete = confirm('Are You sure You want to Delete this task ?');
+    const confirmDelete = confirm('Are you sure you want to delete this task?');
 
     if (confirmDelete) {
-       
-        // Fetch the tasks from the local storage.
+        // Fetch the tasks from local storage
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-        //remove the task at specified index.
+        // Remove the task at the specified index
         tasks.splice(index, 1);
 
-        // set the new tasks again into local storage.
+        // Set the new tasks again into local storage
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
-        // refresh the new tasks and display to user.
+        // Refresh the task list
         displayTasks();
-
     }
 }
 
-    // Edit task functionality
-    // logic : when user click on the edit button of a task , that task title , due date and all should be fetched and added into the create Task form  and u can update the data there. 
+// Edit task functionality
+function editTask(index) {
+    // Fetch the tasks from storage
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const task = tasks[index];
 
-    function editTask(index) {
-       // fetch the tasks from the storage
-       let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
- 
-       // get that task to edit from the tasks;
-       const task = tasks[index];
-        
-       // set the values of the task to the fields in the form
-       document.getElementById('title').value = tasks.title;
-       document.getElementById('Description').value = tasks.description
-       document.getElementById('Due Date').value = tasks.dueDate;
+    // Set the values of the task to the fields in the form
+    document.getElementById('title').value = task.title;
+    document.getElementById('Description').value = task.description;
+    document.getElementById('DueDate').value = task.dueDate;
 
-       document.querySelector(`input[name="priority"] value=${tasks.priority}`).checked = true;
-       document.querySelector(`input[name="status"] value=${tasks.status}`).checked = true;
+    document.querySelector(`input[name="priority"][value="${task.priority}"]`).checked = true;
+    document.querySelector(`input[name="status"][value="${task.status}"]`).checked = true;
 
-       document.getElementById('task-form').onsubmit(function(event){
-            event.preventDefault();
-            editTask(index);
-       })
+    document.getElementById('edit-index').value = index; // Set the index for editing
 
+    // Show the modal
+    document.getElementById('createTaskModal').style.display = 'block';
+}
+
+// Function to show the modal when the add task icon is clicked
+document.getElementById('addTaskIcon').onclick = function () {
+    document.getElementById('createTaskModal').style.display = 'block';
+    document.getElementById('task-form').reset(); // Reset the form fields
+    document.getElementById('edit-index').value = ''; // Clear the edit index
+};
+
+// Function to close the modal
+document.getElementById('closeModal').onclick = function () {
+    document.getElementById('createTaskModal').style.display = 'none';
+};
+
+// Close the modal when clicking cancel button
+document.getElementById('cancelButton').onclick = function () {
+    document.getElementById('createTaskModal').style.display = 'none';
+};
+
+// Save or edit task on form submission
+document.getElementById('task-form').onsubmit = function (event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    const title = document.getElementById('title').value; // Get task title
+    const description = document.getElementById('Description').value; // Get task description
+    const dueDate = document.getElementById('DueDate').value; // Get task due date
+    const priority = document.querySelector('input[name="priority"]:checked').value; // Get selected priority
+    const status = document.querySelector('input[name="status"]:checked').value; // Get selected status
+
+    // Get the edit index (if any)
+    const editIndex = document.getElementById('edit-index').value;
+
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Fetch tasks from localStorage
+
+    // Check if editing an existing task
+    if (editIndex) {
+        // If editing, update the task at the edit index
+        tasks[editIndex] = {
+            title,
+            description,
+            dueDate,
+            priority,
+            status
+        };
+    } else {
+        // If adding a new task, create a new task object
+        const newTask = {
+            title,
+            description,
+            dueDate,
+            priority,
+            status
+        };
+        tasks.push(newTask); // Add the new task to the tasks array
     }
-document.addEventListener('DOMContentLoaded', displayTasks);
+
+    // Save the updated tasks back to localStorage
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    // Reset the form fields after saving
+    document.getElementById('task-form').reset(); // Clear the form fields
+    document.getElementById('edit-index').value = ''; // Clear the edit index
+
+    // Hide the modal
+    document.getElementById('createTaskModal').style.display = 'none';
+
+    // Refresh the task list to reflect changes
+    displayTasks();
+};
+
+// Initial call to display tasks on page load
+displayTasks();
+
+// document.addEventListener('DOMContentLoaded', displayTasks);

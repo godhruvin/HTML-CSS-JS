@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks Display</title>
     <link rel="stylesheet" href="DisplayTask.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <!-- Logo for the navbar -->
         <div class="logo">
             Task
             <span>Manager</span>
         </div>
-        <!-- Menu Items for the navbar -->
         <div class="menu-container">
             <ul id="items" class="items">
                 <li>
@@ -27,10 +26,80 @@
 
     <div class="task-section">
         <h2>Your Tasks</h2>
+        <i class="fa fa-circle-plus add-task-icon" id="addTaskIcon" title="Add Task"></i>
         <div class="task-list" id="task-list">
             <p id="no-tasks-message" style="display: none; color: red;">Please create a task to see your tasks.</p>
         </div>
     </div>
+
+    <!-- Create/Edit Task Modal -->
+    <div class="modal" id="createTaskModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Task</h5>
+                <button type="button" class="close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="task-form" class="task-form">
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" placeholder="Enter the Title" required>
+
+                    <label for="Description">Description: </label>
+                    <textarea id="Description" placeholder="Enter the Description" required></textarea>
+
+                    <label for="DueDate">Due Date: </label>
+                    <input type="date" id="DueDate" required>
+
+                    <div class="priority-status-section">
+                        <div class="priority">
+                            <label>Priority:</label>
+                            <div class="radio-group">
+                                <div>
+                                    <input type="radio" id="Low" name="priority" value="Low" required>
+                                    <label for="Low">Low</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Medium" name="priority" value="Medium" required>
+                                    <label for="Medium">Medium</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="High" name="priority" value="High" required>
+                                    <label for="High">High</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="status">
+                            <label>Status:</label>
+                            <div class="radio-group">
+                                <div>
+                                    <input type="radio" id="Not-Started" name="status" value="Not-Started" required>
+                                    <label for="Not-Started">Not Started</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="In-Progress" name="status" value="In-Progress" required>
+                                    <label for="In-Progress">In Progress</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Completed" name="status" value="Completed" required>
+                                    <label for="Completed">Completed</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="edit-index" value="">
+                    <div id="btn">
+                        <button type="submit" class="submit-button">Save</button>
+                        <button type="button" class="cancel-button" id="cancelButton">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="displayTasks.js"></script>
 </body>
-<script src="displayTasks.js"></script>
+
 </html>

@@ -66,14 +66,29 @@ item:hover {
   letter-spacing: 2px;
 }
 
+.add-task-icon {
+  position: absolute; /* Position it absolutely within the task section */
+  right: 20px; /* Align to the right */
+  top: 20px; /* Align to the top */
+  font-size: 38px; /* Size of the icon */
+  color: #38b83a; /* Icon color */
+  cursor: pointer; /* Change cursor on hover */
+  transition: color 0.3s; /* Transition for hover effect */
+}
+
+.add-task-icon:hover {
+  color: #2ea05a; /* Darker shade on hover */
+}
+
 .task-section {
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 40px auto; /* Center the section with margin */
-    max-width: 90%; /* Set maximum width for the task section */
-    overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  position: relative; /* Make this relative to position the icon */
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 40px auto; /* Center the section with margin */
+  max-width: 90%; /* Set maximum width for the task section */
+  overflow-x: auto; /* Enable horizontal scrolling if necessary */
 }
 
 .task-section h2 {
@@ -125,10 +140,6 @@ item:hover {
     color: #888;
 }
 
-.task-actions {
-    display: flex; /* Use flexbox for action buttons */
-    justify-content: space-between; /* Space between buttons */
-}
 
 .edit-button,
 .delete-button {
@@ -158,4 +169,153 @@ item:hover {
     color: red;
     margin-top: 20px;
     font-weight: bold;
+}
+
+/* Modal styling */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* Center the modal */
+  padding: 30px; /* Increased padding for better spacing */
+  border: none; /* No border */
+  border-radius: 10px; /* Rounded corners */
+  width: 90%; /* Full width for smaller screens */
+  max-width: 500px; /* Max width for larger screens */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+h5{
+ margin: 0;
+ flex-grow: 1;
+}
+/* Modal header */
+.modal-header {
+  display: flex;
+  justify-content: space-between; /* Space between title and close button */
+  align-items: center; /* Align items vertically */
+  padding-bottom: 12px; /* Padding below the header */
+  text-align: center;
+  width: 100%;
+}
+.modal-title{
+
+  font-size: 30px;
+  
+}
+.modal-header h5 {
+  margin: 0; /* Remove default margin */
+  color: #333; /* Darker color for better contrast */
+  font-weight: bold; /* Bold font for emphasis */
+}
+.close {
+  cursor: pointer; /* Pointer cursor for close button */
+  font-size: 25px; /* Increase font size */
+  width: 2.4rem;
+  color: #e74c3c; /* Red color for visibility */
+  background: lightgray; 
+  border: none; /* Remove default button border */
+  padding: 5px; /* Add padding for touch targets */
+  transition: color 0.3s, transform 0.2s; /* Transition for color and scale */
+}
+
+.close:hover {
+  color: #c0392b; /* Darker red on hover */
+  transform: scale(1.2); /* Scale up on hover for emphasis */
+}
+
+.close:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow effect when focused */
+}
+
+/* Form styles */
+.task-form {
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  gap: 15px; /* Space between form fields */
+}
+
+/* Input fields and text area */
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form textarea {
+  padding: 10px; /* Padding inside the fields */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  width: 100%; /* Full width */
+  font-size: 16px; /* Increased font size for readability */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+}
+
+.task-form input[type="text"]:focus,
+.task-form input[type="date"]:focus,
+.task-form textarea:focus {
+  border-color: #34961d; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); /* Glow effect */
+}
+.priority-status-section {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.priority {
+  margin-bottom: 20px; /* Add bottom margin to create space below */
+}
+
+/* Labels */
+.task-form label {
+  font-weight: 600; /* Bold font for labels */
+  color: #555; /* Dark gray for contrast */
+}
+
+/* Radio buttons */
+.radio-group {
+  display: flex; /* Flexbox for radio button layout */
+  gap: 20px; /* Space between radio buttons */
+}
+
+/* Button styles */
+.submit-button,
+.cancel-button {
+  background-color: #34961d; /* Green color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+}
+
+.submit-button:hover,
+.cancel-button:hover {
+  background-color: #2e7d16; /* Darker green on hover */
+  transform: translateY(-1px); /* Slight lift effect */
+}
+
+.cancel-button {
+  background-color: #e74c3c; /* Red color for cancel button */
+}
+
+.cancel-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Button container */
+#btn {
+  display: flex; /* Flexbox for button layout */
+  justify-content: space-between; /* Space between buttons */
 }
