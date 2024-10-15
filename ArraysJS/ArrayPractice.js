@@ -6,7 +6,7 @@ console.log(arr.length);
 // console.log(arr.toString())
 // console.log(arr.at(2));
 // console.log(arr.join("-"))  // same as tostring but in this u can specify the separator
-arr.pop()
+arr.pop()     
 arr.push(7);
 // console.log(arr)
 // console.log(arr.shift()) // shift or remove the first element of the array.

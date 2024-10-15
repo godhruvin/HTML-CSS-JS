@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tasks Display</title>
+    <link rel="stylesheet" href="DisplayTask.css">
 </head>
+
 <body>
-    <!-- Navbar to navigate through the application -->
     <nav class="navbar">
         <!-- Logo for the navbar -->
         <div class="logo">
@@ -20,14 +21,22 @@
                 <li class="item">
                     <a href="/Task Management System/Home.html">Home</a>
                 </li>
-                <li  class="item">
-                    <a href="/Task Management System/CreateTask.html" >Create Task</a>
-                </li>
                 <li class="item">
+                    <a href="/Task Management System/CreateTask.html">Create Task</a>
+                </li>
+                <li>
                     <a href="/Task Management System/DisplayTask.html">Show Tasks</a>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <div class="task-section">
+        <h2>Your Tasks</h2>
+        <div class="task-list" id="task-list">
+            <p id="no-tasks-message" style="display: none; color: red;">Please create a task to see your tasks.</p>
+        </div>
+    </div>
 </body>
+<script src="displayTasks.js"></script>
 </html>

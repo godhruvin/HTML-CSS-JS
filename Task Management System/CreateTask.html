@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Tasks</title>
+    <link rel="stylesheet" href="CreateTask.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <!-- Logo for the navbar -->
+        <div class="logo">
+            Task
+            <span>Manager</span>
+        </div>
+        <!-- Menu Items for the navbar -->
+        <div class="menu-container">
+            <ul id="items" class="items">
+                <li class="item">
+                    <a href="/Task Management System/Home.html">Home</a>
+                </li>
+                <li class="item">
+                    <a href="#">Create Task</a>
+                </li>
+                <li>
+                    <a href="/Task Management System/DisplayTask.html">Show Tasks</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- UI for creating the Task  -->
+    <div class="task-section" id="task-section">
+        <form id="task-form" class="task-form">
+            <label for="title">Title : </label>
+            <input type="text" id="title" placeholder="Enter the Title">
+
+            <label for="Description">Description : </label>
+            <textarea id="Description" placeholder="Enter the Description"></textarea>
+
+            <label for="Due Date">Due Date : </label>
+            <input type="date" id="Due Date" placeholder="Enter the Due Date">
+
+            <div class="priority-status-section">
+                <div class="priority">
+                    <label>Priority:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="Low" name="priority" value="Low" required>
+                        <label for="Low">Low</label>
+
+                        <input type="radio" id="Medium" name="priority" value="Medium" required>
+                        <label for="Medium">Medium</label>
+
+                        <input type="radio" id="High" name="priority" value="High" required>
+                        <label for="High">High</label>
+                    </div>
+                </div>
+
+                <div class="status">
+                    <label>Status:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="Not-Started" name="Status" value="Not-Started" required>
+                        <label for="Not-Started">Not Started</label>
+
+                        <input type="radio" id="In-Progress" name="Status" value="In-Progress" required>
+                        <label for="In-Progress">In Progress</label>
+
+                        <input type="radio" id="Completed" name="Status" value="Completed" required>
+                        <label for="Completed">Completed</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Create Task</button>
+        </form>
+    </div>
+</body>
+<script src="CreateTasks.js"></script>
+</html>
