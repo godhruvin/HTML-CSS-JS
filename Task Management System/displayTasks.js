@@ -75,6 +75,7 @@ function editTask(index) {
 
     // Show the modal
     document.getElementById('createTaskModal').style.display = 'block';
+    document.getElementById('model-title').innerHTML = `Edit Task`;
 }
 
 // Function to show the modal when the add task icon is clicked
@@ -147,5 +148,3 @@ document.getElementById('task-form').onsubmit = function (event) {
 
 // Initial call to display tasks on page load
 displayTasks();
-
-// document.addEventListener('DOMContentLoaded', displayTasks);

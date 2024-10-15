@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks Display</title>
     <link rel="stylesheet" href="DisplayTask.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
     <div class="modal" id="createTaskModal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create Task</h5>
+                <h5 class="modal-title" id="model-title">Create Task</h5>
                 <button type="button" class="close" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
@@ -92,8 +93,9 @@
                     <div id="btn">
                         <button type="submit" class="submit-button">Save</button>
                         <button type="button" class="cancel-button" id="cancelButton">Cancel</button>
+                    
                     </div>
-
+                          
                 </form>
             </div>
         </div>

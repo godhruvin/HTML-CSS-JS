@@ -27,5 +27,4 @@ document.getElementById('task-form').addEventListener('submit', function (event)
     tasks.push(Newtask);
     // store the data again into the Local Storage.
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    window.location.href = `/Task Management System/DisplayTask.html`;
 })
