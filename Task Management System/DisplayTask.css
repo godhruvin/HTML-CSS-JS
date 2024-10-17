@@ -51,6 +51,7 @@ span {
   cursor: pointer;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
+  font-size: 20px;
 }
 
 item:hover {
@@ -77,13 +78,13 @@ item:hover {
 }
 
 .add-task-icon {
-  position: absolute; /* Position it absolutely within the task section */
-  right: 20px; /* Align to the right */
-  top: 20px; /* Align to the top */
-  font-size: 38px; /* Size of the icon */
-  color: #38b83a; /* Icon color */
-  cursor: pointer; /* Change cursor on hover */
-  transition: color 0.3s; /* Transition for hover effect */
+  position: absolute; 
+  right: 20px; 
+  top: 20px;
+  font-size: 38px;
+  color: #38b83a; 
+  cursor: pointer; 
+  transition: color 0.3s; 
 }
 
 .add-task-icon:hover {
@@ -91,14 +92,14 @@ item:hover {
 }
 
 .task-section {
-  position: relative; /* Make this relative to position the icon */
+  position: relative;
   padding: 40px;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  margin: 40px auto; /* Center the section with margin */
-  max-width: 90%; /* Set maximum width for the task section */
-  overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  margin: 40px auto;
+  max-width: 90%; 
+  overflow-x: auto; 
 }
 /* Enhanced Search Bar Styles */
 .search-filter {
@@ -109,13 +110,13 @@ item:hover {
 
 /* Search input styles */
 #searchBar {
-  padding: 10px; /* Padding for the search input */
-  border: 1px solid #ccc; /* Light border */
+  padding: 10px; 
+  border: 1px solid #ccc;
   border-radius: 5px; /* Rounded corners */
-  width: 1000px; /* Fixed width for consistency */
-  font-size: 16px; /* Font size for readability */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+  width: 1000px; 
+  font-size: 16px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  transition: border-color 0.3s, box-shadow 0.3s; /
 }
 
 #searchBar:focus {
@@ -125,12 +126,12 @@ item:hover {
 
 /* Dropdown styles */
 select {
-  padding: 10px; /* Padding for dropdowns */
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 7px; /* Rounded corners */
-  background-color: #fff; /* White background */
-  font-size: 16px; /* Font size for readability */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 7px; 
+  background-color: #fff; 
+  font-size: 16px; 
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 select:focus {
@@ -145,27 +146,27 @@ select:focus {
 }
 
 .task-list {
-  display: grid; /* Use flexbox to arrange tasks horizontally */
+  display: grid; 
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px; /* Space between tasks */
-  overflow-x: auto; /* Allow horizontal scrolling */
+  gap: 15px; 
+  overflow-x: auto;
 }
 
 .task-item {
-  flex: 0 0 300px; /* Fixed width for each task item */
+  flex: 0 0 300px; 
   padding: 15px;
-  background-color: #f9f9f9; /* Light background for tasks */
-  border: 1px solid #ddd; /* Border around task items */
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
   border-radius: 8px;
   transition: box-shadow 0.3s;
 }
 
 .task-item:hover {
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .task-details {
-  margin-bottom: 10px; /* Space between details and action buttons */
+  margin-bottom: 10px; 
 }
 
 .task-title {
@@ -257,9 +258,9 @@ h5 {
 }
 
 .modal-header h5 {
-  margin: 0; /* Remove default margin */
-  color: #333; /* Darker color for better contrast */
-  font-weight: bold; /* Bold font for emphasis */
+  margin: 0; 
+  color: #333; 
+  font-weight: bold; 
 }
 .modal-body {
   letter-spacing: 2.4px;
@@ -270,14 +271,14 @@ h5 {
 }
 
 .close {
-  cursor: pointer; /* Pointer cursor for close button */
-  font-size: 25px; /* Increase font size */
+  cursor: pointer;
+  font-size: 25px; 
   width: 2.4rem;
-  color: #e74c3c; /* Red color for visibility */
+  color: #e74c3c;
   background: lightgray;
-  border: none; /* Remove default button border */
-  padding: 5px; /* Add padding for touch targets */
-  transition: color 0.3s, transform 0.2s; /* Transition for color and scale */
+  border: none; 
+  padding: 5px; 
+  transition: color 0.3s, transform 0.2s; 
 }
 
 .close:hover {
@@ -286,118 +287,133 @@ h5 {
 }
 
 .close:focus {
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow effect when focused */
+  outline: none; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Form styles */
+
 .task-form {
-  display: flex; /* Flexbox for layout */
-  flex-direction: column; /* Stack items vertically */
-  gap: 15px; /* Space between form fields */
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
 }
 
 /* Input fields and text area */
 .task-form input[type="text"],
 .task-form input[type="date"],
 .task-form textarea {
-  padding: 10px; /* Padding inside the fields */
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 5px; /* Rounded corners */
+  padding: 10px; 
+  border: 1px solid #ddd;
+  border-radius: 5px; 
   width: 100%; /* Full width */
-  font-size: 16px; /* Increased font size for readability */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+  font-size: 16px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  transition: border-color 0.3s, box-shadow 0.3s; /
 }
 
 .task-form input[type="text"]:focus,
 .task-form input[type="date"]:focus,
 .task-form textarea:focus {
-  border-color: #34961d; /* Green border on focus */
-  box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); /* Glow effect */
+  border-color: #34961d; 
+  box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); 
+}
+.error,.error-message {
+  color: red; 
+  font-size: 0.9em; 
+  margin-top: 5px; 
+  display: none; 
+}
+
+input.error,
+textarea.error {
+  border: 1px solid red;
+}
+
+input.error:focus,
+textarea.error:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 .priority-status-section {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack elements vertically */
+  display: flex;
+  flex-direction: column; 
 }
 
 .priority {
-  margin-bottom: 20px; /* Add bottom margin to create space below */
+  margin-bottom: 20px; 
 }
 
 /* Labels */
 .task-form label {
-  font-weight: 600; /* Bold font for labels */
-  color: #555; /* Dark gray for contrast */
+  font-weight: 600;
+  color: #555; 
 }
 
 /* Radio buttons */
 .radio-group {
-  display: flex; /* Flexbox for radio button layout */
-  gap: 20px; /* Space between radio buttons */
+  display: flex; 
+  gap: 20px; 
 }
-
 /* Button styles */
 .submit-button,
 .cancel-button {
-  background-color: #34961d; /* Green color */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 16px; /* Font size */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+  background-color: #34961d;
+  color: white;
+  padding: 10px 20px; 
+  border: none;
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.2s; 
 }
 
 .submit-button:hover,
 .cancel-button:hover {
-  background-color: #2e7d16; /* Darker green on hover */
-  transform: translateY(-1px); /* Slight lift effect */
+  background-color: #2e7d16; 
+  transform: translateY(-1px); 
 }
 
 .cancel-button {
-  background-color: #e74c3c; /* Red color for cancel button */
+  background-color: #e74c3c; 
 }
 
 .cancel-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b; 
 }
 
-/* Button container */
 #btn {
-  display: flex; /* Flexbox for button layout */
-  justify-content: space-between; /* Space between buttons */
+  display: flex; 
+  justify-content: space-between; 
 }
 
 /* Navigation Bar Styles */
 .navbar {
-  padding: 10px 20px; /* Padding around the navbar */
+  padding: 10px 20px;
 }
 
 /* Add Task Icon Styles */
 .add-task-icon {
-  position: absolute; /* Position it absolutely within the task section */
-  right: 20px; /* Align to the right */
-  top: 20px; /* Align to the top */
+  position: absolute; 
+  right: 20px; 
+  top: 20px; 
 }
 
 /* Task Section Styles */
 .task-section {
-  position: relative; /* Position for the task section */
+  position: relative; 
   padding: 40px;
   background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 10px; /* Rounded corners for the task section */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Task List Styles */
 .task-list {
-  display: grid; /* Grid display for tasks */
-  grid-template-columns: repeat(3, 1fr); /* Three columns for tasks */
-  gap: 15px; /* Gap between tasks */
-  overflow-x: auto; /* Allow horizontal scrolling */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; 
+  overflow-x: auto; 
 }
 
 /* Task Item Styles */
@@ -405,32 +421,31 @@ h5 {
 .task-item {
   position: relative;
   padding: 15px;
-  background-color: #f9f9f9; /* Light background for tasks */
-  border: 1px solid #ddd; /* Border around task items */
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
   border-radius: 8px;
-  transition: box-shadow 0.3s, transform 0.2s, background-color 0.3s; /* Transition for hover effects */
+  transition: box-shadow 0.3s, transform 0.2s, background-color 0.3s; 
 }
 
 .task-item:hover {
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
-  transform: translateY(-2px); /* Lift effect */
-  background-color: #e8e8e8; /* Change background color on hover */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
+  transform: translateY(-2px); 
+  background-color: #e8e8e8; 
 }
 
-/* Task Icons Styles */
+
 .task-icons {
-  position: absolute; /* Absolute positioning */
-  top: 10px; /* Distance from the top */
-  right: 15px; /* Distance from the right */
-  display: flex; /* Flexbox for alignment */
-  gap: 10px; /* Space between icons */
-  cursor: pointer; /* Pointer cursor for icons */
+  position: absolute; 
+  top: 10px; 
+  right: 15px; 
+  display: flex; 
+  gap: 10px; 
+  cursor: pointer; 
 }
 
-/* Icon Styling */
 .task-icons i {
-  font-size: 1.2rem; /* Adjust icon size */
-  transition: color 0.3s; /* Transition for hover effect */
+  font-size: 1.2rem; 
+  transition: color 0.3s; 
 }
 
 #editIcon {
@@ -441,25 +456,24 @@ h5 {
 }
 /* Task Title Styles */
 .task-title {
-  font-size: 1.5rem; /* Font size for task title */
-  color: #333; /* Color for task title */
+  font-size: 1.5rem; 
+  color: #333; 
 }
 
-/* Button styles for task actions */
+
 .edit-button,
 .delete-button {
-  background-color: #b88738; /* Base color for buttons */
-  color: white; /* Text color */
+  background-color: #b88738; 
+  color: white; 
 }
 
 .edit-button:hover,
 .delete-button:hover {
-  background-color: #a0752e; /* Darker color on hover */
+  background-color: #a0752e; 
 }
 
-/* No Tasks Message Styles */
 #no-tasks-message {
-  color: red; /* Red color for message */
-  margin-top: 20px; /* Top margin */
-  font-weight: bold; /* Bold font for emphasis */
+  color: red; 
+  margin-top: 20px; 
+  font-weight: bold; 
 }

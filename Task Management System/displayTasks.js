@@ -111,8 +111,8 @@ function editTask(index) {
 // Function to show the modal when the add task icon is clicked
 document.getElementById('addTaskIcon').onclick = function () {
     document.getElementById('createTaskModal').style.display = 'block';
-    document.getElementById('task-form').reset(); // Reset the form fields
-    document.getElementById('edit-index').value = ''; // Clear the edit index
+    document.getElementById('task-form').reset();
+    document.getElementById('edit-index').value = '';
     document.getElementById('model-title').innerHTML = 'Create Task';
 };
 
@@ -127,62 +127,84 @@ document.getElementById('cancelButton').onclick = function () {
 };
 
 // Save or edit task on form submission
+
 document.getElementById('task-form').onsubmit = function (event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+    event.preventDefault();
+    document.getElementById('titleError').style.display = 'none';
+    document.getElementById('descriptionError').style.display = 'none';
 
-    const title = document.getElementById('title').value; // Get task title
-    const description = document.getElementById('Description').value; // Get task description
-    const dueDate = document.getElementById('DueDate').value; // Get task due date
-    const priority = document.querySelector('input[name="priority"]:checked').value; // Get selected priority
-    const status = document.querySelector('input[name="status"]:checked').value; // Get selected status
+    const title = document.getElementById('title').value.trim();
+    const description = document.getElementById('Description').value.trim();
+    const dueDate = document.getElementById('DueDate').value;
+    const priority = document.querySelector('input[name="priority"]:checked').value;
+    console.log(priority)
+    const status = document.querySelector('input[name="status"]:checked').value;
 
-    
-    // Get the edit index (if any)
-    const editIndex = document.getElementById('edit-index').value;
+    let isValid = true;
 
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Fetch tasks from localStorage
-
-    // Check if editing an existing task
-    if (editIndex) {
-        // If editing, update the task at the edit index
-        tasks[editIndex] = {
-            title,
-            description,
-            dueDate,
-            priority,
-            status
-        };
-    } else {
-        // If adding a new task, create a new task object
-        const newTask = {
-            title,
-            description,
-            dueDate,
-            priority,
-            status
-        };
-        tasks.push(newTask); // Add the new task to the tasks array
+    if (!title) {
+        document.getElementById('titleError').innerText = 'Title is required.';
+        document.getElementById('titleError').style.display = 'block';
+        isValid = false;
+    } else if (!/^[a-zA-Z0-9 ]+$/.test(title)) {
+        document.getElementById('titleError').innerText = 'Title must be alphanumeric.';
+        document.getElementById('titleError').style.display = 'block';
+        isValid = false;
     }
 
-    // Save the updated tasks back to localStorage
-    localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    // Reset the form fields after saving
-    document.getElementById('task-form').reset(); // Clear the form fields
-    document.getElementById('edit-index').value = ''; // Clear the edit index
+    if (!description) {
+        document.getElementById('descriptionError').innerText = 'Description is required.';
+        document.getElementById('descriptionError').style.display = 'block';
+        isValid = false;
+    } else if (!/^[\s\S]*$/.test(description)) {
+        document.getElementById('descriptionError').innerText = 'Description must be alphanumeric.';
+        document.getElementById('descriptionError').style.display = 'block';
+        isValid = false;
+    }
 
-    // Hide the modal
-    document.getElementById('createTaskModal').style.display = 'none';
+    if (isValid) {
+        const editIndex = document.getElementById('edit-index').value;
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
-    // Refresh the task list to reflect changes
-    displayTasks();
+        if (editIndex) {
+            tasks[editIndex] = {
+                title,
+                description,
+                dueDate,
+                priority,
+                status
+            };
+        } else {
+
+            const newTask = {
+                title,
+                description,
+                dueDate,
+                priority,
+                status
+            };
+            tasks.push(newTask);
+        }
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+
+        document.getElementById('task-form').reset();
+        document.getElementById('edit-index').value = '';
+
+        document.getElementById('createTaskModal').style.display = 'none';
+
+
+        displayTasks();
+    }
 };
 
 // Function to filter tasks based on search input
-function filterTasks() {
-    const searchTerm = document.getElementById('searchBar').value.toLowerCase(); 
-    // const priorityFilter = document.getElementById('priorityFilter').value;
-    // const statusFilter = document.getElementById('statusFilter').value;
+function filterTasks(e) {
+    const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    const priorityFilter = document.getElementById('priorityFilter');
+    const statusFilter = document.getElementById('statusFilter');
     const notStartedListElement = document.getElementById('not-started-column');
     const inProgressListElement = document.getElementById('in-progress-column');
     const completedListElement = document.getElementById('completed-column');
@@ -206,46 +228,47 @@ function filterTasks() {
         document.getElementById('no-in-progress').style.display = 'none';
         document.getElementById('no-completed').style.display = 'none';
 
-        // Iterate over the tasks and display them based on the search term
-        tasks.forEach((task, index) => 
-        {
-            const taskItem = document.createElement('div');
-            taskItem.className = 'task-item';
-            taskItem.innerHTML = `
-               <div class="task-icons">
-                    <i class="fa-solid fa-pen-to-square" id="editIcon" onclick="editTask(${index})" title="Edit Task"></i>
-                    <i class="fa-solid fa-trash-can"  id="deleteIcon" onclick="deleteTask(${index})" title="Delete Task"></i>
-                </div>
-                <div class="task-details">
-                    <h4 class="task-title">${task.title}</h4>
-                    <p class="task-description">${task.description}</p>
-                    <p class="task-due-date">Due Date: <strong>${task.dueDate}</strong></p>
-                    <p class="task-priority">Priority: <strong id="priority-${index}">${task.priority}</strong></p>
-                    <p class="task-status">Status: <strong>${task.status}</strong></p>
-                </div>
-            `;
+        // Initialize a variable to track if any tasks matched the search
+        let anyTaskMatched = false;
 
-            const priorityEl = document.getElementById(`priority-${index}`);
-            console.log(priorityEl)
-            if (task.priority === "Low") {
-                priorityEl.style.color = 'green';
-            } else if (task.priority === "Medium") {
-                priorityEl.style.color = '#cc9900';
-                priorityEl.style.backgroundColor = '#f0f0f0';
-            } else if (task.priority === "High") {
-                priorityEl.style.color = 'red';
-            }
+        tasks.forEach((task, index) => {
+            const matchesSearch = task.title.toLowerCase().includes(searchTerm) ||
+                task.description.toLowerCase().includes(searchTerm);
 
-            // Check if the task matches the search term  
-            const matchesSearch = task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                task.description.toLowerCase().includes(searchTerm.toLowerCase());
-            
-                console.log(`Matching search for "${searchTerm}":`, matchesSearch);
-            // const prioritySearch = task.priority === priorityFilter;
-            // const statusSearch = task.status === statusFilter;
-            
-            // Append the task item to the respective status column if it matches the search
-            if (matchesSearch) {
+            const prioritySearch = (priorityFilter.value === "All" || task.priority === priorityFilter.value);
+            const statusSearch = (statusFilter.value === "All" || task.status === statusFilter.value);
+
+            // Only append the task item if it matches the search
+            if (matchesSearch && prioritySearch && statusSearch) {
+                anyTaskMatched = true;
+
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item';
+                taskItem.innerHTML = `
+                    <div class="task-icons">
+                        <i class="fa-solid fa-pen-to-square" id="editIcon" onclick="editTask(${index})" title="Edit Task"></i>
+                        <i class="fa-solid fa-trash-can" id="deleteIcon" onclick="deleteTask(${index})" title="Delete Task"></i>
+                    </div>
+                    <div class="task-details">
+                        <h4 class="task-title">${task.title}</h4>
+                        <p class="task-description">${task.description}</p>
+                        <p class="task-due-date">Due Date: <strong>${task.dueDate}</strong></p>
+                        <p class="task-priority">Priority: <strong id="priority-${index}">${task.priority}</strong></p>
+                        <p class="task-status">Status: <strong>${task.status}</strong></p>
+                    </div>
+                `;
+
+                const priorityEl = taskItem.querySelector(`strong[id="priority-${index}"]`); // Select the priority within the new taskItem
+                if (task.priority === "Low") {
+                    priorityEl.style.color = 'green';
+                } else if (task.priority === "Medium") {
+                    priorityEl.style.color = '#cc9900';
+                    priorityEl.style.backgroundColor = '#f0f0f0';
+                } else if (task.priority === "High") {
+                    priorityEl.style.color = 'red';
+                }
+
+                // Append the task item to the respective status column
                 switch (task.status) {
                     case 'Not-Started':
                         notStartedListElement.appendChild(taskItem);
@@ -258,12 +281,20 @@ function filterTasks() {
                         break;
                 }
             }
-           
         });
-        console.log(tasks)
+
+        // If no tasks matched the search term, display the no tasks message in the respective columns
+        if (!anyTaskMatched) {
+            document.getElementById('no-not-started').style.display = 'block';
+            document.getElementById('no-in-progress').style.display = 'block';
+            document.getElementById('no-completed').style.display = 'block';
+        }
     }
 }
+
 // Add event listener for search bar to filter tasks as user types
 document.getElementById('searchBar').addEventListener('keyup', filterTasks);
+document.getElementById('priorityFilter').addEventListener('change', filterTasks);
+document.getElementById('statusFilter').addEventListener('change', filterTasks);
 displayTasks();
 

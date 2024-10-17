@@ -24,24 +24,24 @@
         </div>
     </nav>
 
-        <div class="task-section">
-            <h2>Your Tasks</h2>
-            <div class="search-filter">
-                <input type="text" id="searchBar" placeholder="Search for tasks..." />
-                <select id="priorityFilter">
-                    <option value="">Filter by Priority</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <select id="statusFilter">
-                    <option value="">Filter by Status</option>
-                    <option value="Not-Started">Not Started</option>
-                    <option value="In-Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-                <i class="fa fa-circle-plus add-task-icon" id="addTaskIcon" title="Add Task"></i>
-            </div>
+    <div class="task-section">
+        <h2>Your Tasks</h2>
+        <div class="search-filter">
+            <input type="text" id="searchBar" placeholder="Search for tasks..." />
+            <select id="priorityFilter">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <select id="statusFilter">
+                <option value="All">All</option>
+                <option value="Not-Started">Not Started</option>
+                <option value="In-Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <i class="fa fa-circle-plus add-task-icon" id="addTaskIcon" title="Add Task"></i>
+        </div>
 
         <div class="task-list" id="task-list">
             <div class="task-column" id="not-started-column">
@@ -69,22 +69,22 @@
             </div>
             <div class="modal-body">
                 <form id="task-form" class="task-form">
-                    <div>
-                        <div><label for="title">Title: </label></div>
-                        <div><input type="text" id="title" placeholder="Enter the Title"></div>
-                    </div>
-                    <div>
-                        <div><label for="Description">Description: </label></div>
-                        <div><textarea id="Description" placeholder="Enter the Description"></textarea></div>
-                    </div>
-                    <div>
-                        <div><label for="DueDate">Due Date: </label></div>
-                        <div><input type="date" id="DueDate"></div>
-                    </div>
+
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" placeholder="Enter the Title">
+                    <p id="titleError" class="error" style="display: none;"></p>
+
+                    <label for="Description">Description: </label>
+                    <textarea id="Description" placeholder="Enter the Description"></textarea>
+                    <p id="descriptionError" class="error" style="display: none;"></p>
+
+                    <label for="DueDate">Due Date: </label>
+                    <input type="date" id="DueDate">
+                    <p id="dateError" class="error" style="display: none;"></p>
 
                     <div class="priority-status-section">
                         <div class="priority">
-                            <div><label>Priority:</label></div>
+                            <label>Priority:</label>
                             <div class="radio-group">
                                 <div>
                                     <input type="radio" id="Low" name="priority" value="Low">
@@ -98,11 +98,12 @@
                                     <input type="radio" id="High" name="priority" value="High">
                                     <label for="High">High</label>
                                 </div>
+                                <p id="priorityError" class="error-message" style="display: none; color: red;"></p>
                             </div>
                         </div>
 
                         <div class="status">
-                            <div><label>Status:</label></div>
+                            <label>Status:</label>
                             <div class="radio-group">
                                 <div>
                                     <input type="radio" id="Not-Started" name="status" value="Not-Started">
@@ -117,6 +118,7 @@
                                     <label for="Completed">Completed</label>
                                 </div>
                             </div>
+                            <p id="statusError" class="error-message" style="display: none; color: red;"></p>
                         </div>
                     </div>
 
