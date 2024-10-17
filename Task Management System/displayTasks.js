@@ -213,7 +213,7 @@ document.getElementById('task-form').onsubmit = function (event) {
         document.getElementById('edit-index').value = '';
 
         document.getElementById('createTaskModal').style.display = 'none';
-
+     
 
         displayTasks();
     }
