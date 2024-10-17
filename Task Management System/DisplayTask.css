@@ -4,6 +4,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #f5f5dc;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -11,6 +12,7 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.14);
   opacity: 0.9;
 }
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -21,18 +23,22 @@ body {
   margin: 10px;
   letter-spacing: 4px;
 }
+
 span {
   margin-left: 30px;
 }
+
 .menu-container {
   padding: 8px;
   margin: 8px;
 }
+
 .menu-container ul {
   display: flex;
   gap: 30px;
   list-style: none;
 }
+
 .menu-container a {
   color: white;
   text-decoration: none;
@@ -40,14 +46,17 @@ span {
   transition: background-color 0.3s;
   border-radius: 5px;
 }
+
 .menu-container ul li {
   cursor: pointer;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
 }
+
 item:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -55,12 +64,13 @@ item:hover {
   align-items: center;
   height: 70vh;
 }
+
 .container h1 {
   letter-spacing: 2.4px;
   font-style: italic;
   font-size: X-larger;
-  text-transform: uppercase;
 }
+
 .container p {
   font-size: 14px;
   letter-spacing: 2px;
@@ -90,85 +100,115 @@ item:hover {
   max-width: 90%; /* Set maximum width for the task section */
   overflow-x: auto; /* Enable horizontal scrolling if necessary */
 }
+/* Enhanced Search Bar Styles */
+.search-filter {
+  display: flex; /* Use flexbox for layout */
+  gap: 15px; /* Space between elements */
+  margin-bottom: 20px; /* Space below the search filter */
+}
+
+/* Search input styles */
+#searchBar {
+  padding: 10px; /* Padding for the search input */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  width: 1000px; /* Fixed width for consistency */
+  font-size: 16px; /* Font size for readability */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+}
+
+#searchBar:focus {
+  border-color: #34961d; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); /* Glow effect */
+}
+
+/* Dropdown styles */
+select {
+  padding: 10px; /* Padding for dropdowns */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 7px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  font-size: 16px; /* Font size for readability */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+}
+
+select:focus {
+  border-color: #34961d; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); /* Glow effect */
+}
 
 .task-section h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .task-list {
-    display: grid; /* Use flexbox to arrange tasks horizontally */
-    grid-template-columns: repeat(3 ,1fr);
-    gap: 15px; /* Space between tasks */
-    overflow-x: auto; /* Allow horizontal scrolling */
+  display: grid; /* Use flexbox to arrange tasks horizontally */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; /* Space between tasks */
+  overflow-x: auto; /* Allow horizontal scrolling */
 }
 
 .task-item {
-    flex: 0 0 300px; /* Fixed width for each task item */
-    padding: 15px;
-    background-color: #f9f9f9; /* Light background for tasks */
-    border: 1px solid #ddd; /* Border around task items */
-    border-radius: 8px;
-    transition: box-shadow 0.3s;
+  flex: 0 0 300px; /* Fixed width for each task item */
+  padding: 15px;
+  background-color: #f9f9f9; /* Light background for tasks */
+  border: 1px solid #ddd; /* Border around task items */
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
 }
 
 .task-item:hover {
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
 .task-details {
-    margin-bottom: 10px; /* Space between details and action buttons */
+  margin-bottom: 10px; /* Space between details and action buttons */
 }
 
 .task-title {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 5px;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 .task-description {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 5px;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 5px;
 }
-
-.task-due-date,
-.task-priority,
-.task-status {
-    font-size: 0.9rem;
-    color: #888;
-}
-
 
 .edit-button,
 .delete-button {
-    background-color: #b88738;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+  background-color: #b88738;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .edit-button:hover,
 .delete-button:hover {
-    background-color: #a0752e; /* Darker color on hover */
-    transform: translateY(-1px);
+  background-color: #a0752e; /* Darker color on hover */
+  transform: translateY(-1px);
 }
 
 .delete-button {
-    background-color: #e74c3c; /* Different color for delete button */
+  background-color: #e74c3c; /* Different color for delete button */
 }
 
 .delete-button:hover {
-    background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b; /* Darker red on hover */
 }
+
 #no-tasks-message {
-    color: red;
-    margin-top: 20px;
-    font-weight: bold;
+  color: red;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 /* Modal styling */
@@ -187,19 +227,20 @@ item:hover {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* Center the modal */
-  padding: 30px; /* Increased padding for better spacing */
-  border: none; /* No border */
-  border-radius: 10px; /* Rounded corners */
-  width: 90%; /* Full width for smaller screens */
-  max-width: 500px; /* Max width for larger screens */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  margin: 10% auto;
+  padding: 40px;
+  border: none;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-h5{
- margin: 0;
- flex-grow: 1;
+h5 {
+  margin: 0;
+  flex-grow: 1;
 }
+
 /* Modal header */
 .modal-header {
   display: flex;
@@ -209,22 +250,31 @@ h5{
   text-align: center;
   width: 100%;
 }
-.modal-title{
 
+.modal-title {
   font-size: 30px;
-  
+  letter-spacing: 2px;
 }
+
 .modal-header h5 {
   margin: 0; /* Remove default margin */
   color: #333; /* Darker color for better contrast */
   font-weight: bold; /* Bold font for emphasis */
 }
+.modal-body {
+  letter-spacing: 2.4px;
+}
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .close {
   cursor: pointer; /* Pointer cursor for close button */
   font-size: 25px; /* Increase font size */
   width: 2.4rem;
   color: #e74c3c; /* Red color for visibility */
-  background: lightgray; 
+  background: lightgray;
   border: none; /* Remove default button border */
   padding: 5px; /* Add padding for touch targets */
   transition: color 0.3s, transform 0.2s; /* Transition for color and scale */
@@ -266,6 +316,7 @@ h5{
   border-color: #34961d; /* Green border on focus */
   box-shadow: 0 0 5px rgba(52, 150, 29, 0.5); /* Glow effect */
 }
+
 .priority-status-section {
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Stack elements vertically */
@@ -318,4 +369,97 @@ h5{
 #btn {
   display: flex; /* Flexbox for button layout */
   justify-content: space-between; /* Space between buttons */
+}
+
+/* Navigation Bar Styles */
+.navbar {
+  padding: 10px 20px; /* Padding around the navbar */
+}
+
+/* Add Task Icon Styles */
+.add-task-icon {
+  position: absolute; /* Position it absolutely within the task section */
+  right: 20px; /* Align to the right */
+  top: 20px; /* Align to the top */
+}
+
+/* Task Section Styles */
+.task-section {
+  position: relative; /* Position for the task section */
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px; /* Rounded corners for the task section */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+/* Task List Styles */
+.task-list {
+  display: grid; /* Grid display for tasks */
+  grid-template-columns: repeat(3, 1fr); /* Three columns for tasks */
+  gap: 15px; /* Gap between tasks */
+  overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+/* Task Item Styles */
+
+.task-item {
+  position: relative;
+  padding: 15px;
+  background-color: #f9f9f9; /* Light background for tasks */
+  border: 1px solid #ddd; /* Border around task items */
+  border-radius: 8px;
+  transition: box-shadow 0.3s, transform 0.2s, background-color 0.3s; /* Transition for hover effects */
+}
+
+.task-item:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+  transform: translateY(-2px); /* Lift effect */
+  background-color: #e8e8e8; /* Change background color on hover */
+}
+
+/* Task Icons Styles */
+.task-icons {
+  position: absolute; /* Absolute positioning */
+  top: 10px; /* Distance from the top */
+  right: 15px; /* Distance from the right */
+  display: flex; /* Flexbox for alignment */
+  gap: 10px; /* Space between icons */
+  cursor: pointer; /* Pointer cursor for icons */
+}
+
+/* Icon Styling */
+.task-icons i {
+  font-size: 1.2rem; /* Adjust icon size */
+  transition: color 0.3s; /* Transition for hover effect */
+}
+
+#editIcon {
+  color: green;
+}
+#deleteIcon {
+  color: red;
+}
+/* Task Title Styles */
+.task-title {
+  font-size: 1.5rem; /* Font size for task title */
+  color: #333; /* Color for task title */
+}
+
+/* Button styles for task actions */
+.edit-button,
+.delete-button {
+  background-color: #b88738; /* Base color for buttons */
+  color: white; /* Text color */
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #a0752e; /* Darker color on hover */
+}
+
+/* No Tasks Message Styles */
+#no-tasks-message {
+  color: red; /* Red color for message */
+  margin-top: 20px; /* Top margin */
+  font-weight: bold; /* Bold font for emphasis */
 }
