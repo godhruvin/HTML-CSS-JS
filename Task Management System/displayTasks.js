@@ -136,10 +136,12 @@ document.getElementById('task-form').onsubmit = function (event) {
     const title = document.getElementById('title').value.trim();
     const description = document.getElementById('Description').value.trim();
     const dueDate = document.getElementById('DueDate').value;
-    const priority = document.querySelector('input[name="priority"]:checked').value;
-    console.log(priority)
-    const status = document.querySelector('input[name="status"]:checked').value;
+    const priorityElement = document.querySelector('input[name="priority"]:checked');
+    const statusElement = document.querySelector('input[name="status"]:checked');
 
+
+    const priority = priorityElement ? priorityElement.value : null;
+    const status = statusElement ? statusElement.value : null;
     let isValid = true;
 
     if (!title) {
@@ -161,6 +163,23 @@ document.getElementById('task-form').onsubmit = function (event) {
         document.getElementById('descriptionError').innerText = 'Description must be alphanumeric.';
         document.getElementById('descriptionError').style.display = 'block';
         isValid = false;
+    }
+    if (!priority) {
+
+        document.getElementById('priorityError').innerText = 'Priority is required.';
+        document.getElementById('priorityError').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('priorityError').style.display = 'none';
+    }
+
+    if (!status) {
+
+        document.getElementById('statusError').innerText = 'Status is required.';
+        document.getElementById('statusError').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('statusError').style.display = 'none';
     }
 
     if (isValid) {
@@ -199,6 +218,27 @@ document.getElementById('task-form').onsubmit = function (event) {
         displayTasks();
     }
 };
+document.getElementById('title').addEventListener('input', () => {
+    document.getElementById('titleError').style.display = 'none';
+});
+
+document.getElementById('Description').addEventListener('input', () => {
+    document.getElementById('descriptionError').style.display = 'none';
+});
+
+// Assuming your priority and status are radio buttons
+document.querySelectorAll('input[name="priority"]').forEach(input => {
+    input.addEventListener('change', () => {
+        document.getElementById('priorityError').style.display = 'none';
+    });
+});
+
+document.querySelectorAll('input[name="status"]').forEach(input => {
+    input.addEventListener('change', () => {
+        document.getElementById('statusError').style.display = 'none';
+    });
+});
+
 
 // Function to filter tasks based on search input
 function filterTasks(e) {

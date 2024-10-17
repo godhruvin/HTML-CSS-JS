@@ -319,10 +319,11 @@ h5 {
 }
 .error,.error-message {
   color: red; 
-  font-size: 0.9em; 
+  font-size: 12px; 
   margin-top: 5px; 
   display: none; 
 }
+
 
 input.error,
 textarea.error {
