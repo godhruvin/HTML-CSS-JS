@@ -45,7 +45,7 @@ const counter1 = makeCounter();
 
 function increment(){   
     let count = 0;
-    return function add1(){
+    return function add1(){ 
         count += 1;
         return count;
     }
